@@ -43,12 +43,12 @@ import {
 } from "./app-core.mjs";
 
 const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyDXqnnTUxllzZeTiTq5Hf-y6Sb6UlxDkC4",
-  authDomain: "babyapp-66a5a.firebaseapp.com",
-  projectId: "babyapp-66a5a",
-  storageBucket: "babyapp-66a5a.firebasestorage.app",
-  messagingSenderId: "27280225940",
-  appId: "1:27280225940:web:21c9a952f039675c30a681"
+  apiKey: "AIzaSyBlr3ceZOH_9lF5YPotwpkZI94GNWTrrMc",
+  authDomain: "baby-moshe-m.firebaseapp.com",
+  projectId: "baby-moshe-m",
+  storageBucket: "baby-moshe-m.firebasestorage.app",
+  messagingSenderId: "892436342161",
+  appId: "1:892436342161:web:022d01cd0300b559fc2630"
 };
 
 const WHO_KEY              = "eitan-or-who";
