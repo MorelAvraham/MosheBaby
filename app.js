@@ -57,35 +57,6 @@ const DEVICE_ID_KEY = "moshe-m-device-id";
 const BIRTH_DATE    = "2026-04-20";
 const SYNC_LOG_KEY  = "moshe-m-sync-log";
 
-// ============================================================
-// PIN LOCK SYSTEM
-// ============================================================
-const APP_PIN = "2909";
-const pinScreen = document.getElementById("pinScreen");
-const pinForm = document.getElementById("pinForm");
-const pinInput = document.getElementById("pinInput");
-const pinError = document.getElementById("pinError");
-
-if (localStorage.getItem("appUnlocked") === "true") {
-  if (pinScreen) pinScreen.classList.add("hidden");
-} else {
-  if (pinScreen) pinScreen.classList.remove("hidden");
-}
-
-if (pinForm) {
-  pinForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (pinInput.value === APP_PIN) {
-      localStorage.setItem("appUnlocked", "true");
-      pinScreen.classList.add("hidden");
-    } else {
-      pinError.style.display = "block";
-      pinInput.value = "";
-      pinInput.focus();
-    }
-  });
-}
-
 // ---- Labels & Emojis ----
 const EMOJI = {
   wake: "☀️", sleep: "🌙", meal: "🍼",
@@ -99,11 +70,11 @@ const LABELS = {
   roll: "התהפך",   crawl: "זחל",      sit: "ישב לבד", stand: "עמד", walk: "הלך",
 };
 
-const WHO_LABELS = { 
-  mom: "אמא", 
-  dad: "אבא", 
-  sabaHaim: "סבתא מרים",
-  savtaNaama: "סבתא שרה",
+const WHO_LABELS = {
+  mom: "אמא",
+  dad: "אבא",
+  savtaSarah: "סבתא שרה",
+  savtaMarim: "סבתא מרים",
 };
 
 const TASTING_RATING_EMOJIS = {
@@ -2477,13 +2448,11 @@ function setSyncStatus(status) {
 // ============================================================
 function updateWhoToggle() {
   if (!el.whoToggle) return;
-  const presets = { 
-    mom: "👩 אמא", 
-    dad: "👨 אבא", 
-    sabaHaim: "👴 סבא חיים",
-    savtaBruria: "👵 סבתא ברוריה",
-    savtaNaama: "👵 סבתא נעמה",
-    lulit: "🦸‍♀️ לולית"
+  const presets = {
+    mom: "👩 אמא",
+    dad: "👨 אבא",
+    savtaSarah: "👵 סבתא שרה",
+    savtaMarim: "👵 סבתא מרים",
   };
   el.whoToggle.textContent = presets[currentWho] ?? `🧑 ${currentWho}`;
   el.whoToggle.dataset.who = currentWho;

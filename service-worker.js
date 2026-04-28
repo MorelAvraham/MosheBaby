@@ -8,7 +8,7 @@
 // ============================================================
 
 const CACHE_VERSION = "v2";
-const CACHE_NAME = `eitan-or-pwa-shell-${CACHE_VERSION}`;
+const CACHE_NAME = `moshe-m-pwa-shell-${CACHE_VERSION}`;
 
 const APP_SHELL_ASSETS = [
   "/",
@@ -34,7 +34,7 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => Promise.all(
       cacheNames
-        .filter((cacheName) => cacheName.startsWith("eitan-or-pwa-shell-") && cacheName !== CACHE_NAME)
+        .filter((cacheName) => cacheName.startsWith("moshe-m-pwa-shell-") && cacheName !== CACHE_NAME)
         .map((cacheName) => caches.delete(cacheName)),
     ))
       .then(() => self.clients.claim()),

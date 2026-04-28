@@ -14,22 +14,6 @@
 
 <body>
   <!-- ═══════════════════════════════════════════════
-         PIN ENTRY SCREEN
-         ═══════════════════════════════════════════════ -->
-  <div id="pinScreen" class="pin-screen hidden">
-    <div class="pin-screen__content">
-      <div class="pin-screen__icon">🔒</div>
-      <h2 style="font-size: 1.5rem; margin-bottom: 24px;">נדרשת סיסמה</h2>
-      <form id="pinForm" style="display: flex; flex-direction: column; gap: 16px; align-items: center; width: 100%;">
-        <input type="tel" id="pinInput" placeholder="הכנס קוד" autocomplete="off"
-          style="width: 100%; max-width: 250px; text-align: center; font-size: 1.5rem; letter-spacing: 0.2em; padding: 12px; border-radius: 12px; border: 2px solid var(--line); color: var(--text); background: var(--surface);" />
-        <button type="submit" class="primary-button" style="width: 100%; max-width: 250px;">כניסה</button>
-        <p id="pinError" style="color: #ff3b30; font-size: 0.9rem; display: none; margin: 0;">קוד שגוי, נסה שוב</p>
-      </form>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════════════════════
          APP SHELL — fixed 100dvh, no scroll on body
          ═══════════════════════════════════════════════ -->
   <div class="app-shell">
@@ -432,10 +416,8 @@
           <select id="entryWhoSelect" name="who">
             <option value="mom">👩 אמא</option>
             <option value="dad">👨 אבא</option>
-            <option value="sabaHaim">👴 סבא חיים</option>
-            <option value="savtaBruria">👵 סבתא ברוריה</option>
-            <option value="savtaNaama">👵 סבתא נעמה</option>
-            <option value="lulit">🦸‍♀️ לולית</option>
+            <option value="savtaSarah">👵 סבתא שרה</option>
+            <option value="savtaMarim">👵 סבתא מרים</option>
             <option value="__custom__">🧑 שם אחר</option>
           </select>
         </label>
@@ -522,21 +504,13 @@
           <span class="caregiver-btn__emoji">👨</span>
           <span>אבא</span>
         </button>
-        <button class="caregiver-btn" data-who="sabaHaim" type="button">
-          <span class="caregiver-btn__emoji">👴</span>
-          <span>סבא חיים</span>
-        </button>
-        <button class="caregiver-btn" data-who="savtaBruria" type="button">
+        <button class="caregiver-btn" data-who="savtaSarah" type="button">
           <span class="caregiver-btn__emoji">👵</span>
-          <span>סבתא ברוריה</span>
+          <span>סבתא שרה</span>
         </button>
-        <button class="caregiver-btn" data-who="savtaNaama" type="button">
+        <button class="caregiver-btn" data-who="savtaMarim" type="button">
           <span class="caregiver-btn__emoji">👵</span>
-          <span>סבתא נעמה</span>
-        </button>
-        <button class="caregiver-btn" data-who="lulit" type="button">
-          <span class="caregiver-btn__emoji">🦸‍♀️</span>
-          <span>לולית</span>
+          <span>סבתא מרים</span>
         </button>
       </div>
       <div class="caregiver-custom">
