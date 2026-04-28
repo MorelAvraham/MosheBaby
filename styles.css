@@ -1052,6 +1052,38 @@ button,
   white-space: nowrap;
 }
 
+.tasting-item__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.tasting-item__del-btn {
+  background: none;
+  border: none;
+  padding: 2px 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  opacity: 0.45;
+  transition: opacity 150ms ease, transform 150ms ease;
+  line-height: 1;
+}
+
+.tasting-item__del-btn:hover,
+.tasting-item__del-btn:focus-visible {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+div.tasting-item {
+  cursor: pointer;
+}
+
+div.tasting-item:active {
+  transform: scale(0.98);
+}
+
 /* ============================================================
    STACK LIST
    ============================================================ */

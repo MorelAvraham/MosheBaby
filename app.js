@@ -1219,6 +1219,18 @@ function registerEvents() {
   });
 
   el.tastingChecklistGroups?.addEventListener("click", (event) => {
+    // Delete a specific tasting entry
+    const deleteBtn = event.target.closest("[data-delete-tasting-id]");
+    if (deleteBtn) {
+      const id = deleteBtn.dataset.deleteTastingId;
+      const collection = getTastingEntryCollection(id);
+      const record = state[collection]?.find((e) => e.id === id);
+      if (record) {
+        softDeleteRecord(collection, record).then(() => render());
+      }
+      return;
+    }
+
     const button = event.target.closest("[data-open-tasting-item]");
     if (!button) return;
     openEntrySheetForNew("tasting", {
@@ -1893,6 +1905,12 @@ function renderTimelineDaySummary(entries) {
     .join("");
 }
 
+function getTastingEntryCollection(entryId) {
+  return state.tastingEntries?.some((e) => e.id === entryId)
+    ? "tastingEntries"
+    : "dailyEntries";
+}
+
 function renderTastingChecklist() {
   if (!el.tastingChecklistGroups) return;
 
@@ -1947,31 +1965,50 @@ function renderTastingChecklist() {
       </div>
       <div class="tasting-list">
         ${group.visibleItems.map((item) => {
-          const statusClass = item.matchedEntries.length ? "is-tasted" : "is-pending";
-          const actionLabel = item.matchedEntries.length ? "עוד טעימה" : "סמן טעימה";
+          const isTasted = item.matchedEntries.length > 0;
+          const statusClass = isTasted ? "is-tasted" : "is-pending";
           const latestRating = item.latestEntry?.rating ? (TASTING_RATING_EMOJIS[item.latestEntry.rating] || "") : "";
           const metaParts = [];
           const allergenLabel = getAllergenProgressLabel(item);
 
           if (item.isAllergen) {
             metaParts.push(allergenLabel.meta);
-          } else if (item.matchedEntries.length) {
+          } else if (isTasted) {
             metaParts.push("סומן בצ'קליסט");
           }
 
           if (latestRating) metaParts.push(`תגובה ${latestRating}`);
 
+          const body = `
+            <span class="tasting-item__status" aria-hidden="true">${isTasted ? "✓" : "+"}</span>
+            <span class="tasting-item__body">
+              <span class="tasting-item__title-row">
+                <strong>${escapeHtml(item.label)}</strong>
+                ${item.isAllergen ? `<span class="tasting-item__pill tasting-item__pill--allergen">${escapeHtml(allergenLabel.pill)}</span>` : ""}
+              </span>
+              <span class="tasting-item__meta">${escapeHtml(metaParts.join(" · ") || "עדיין לא תועד")}</span>
+            </span>
+          `;
+
+          if (isTasted) {
+            const latestId = item.latestEntry?.id || "";
+            return `
+              <div class="tasting-item ${statusClass}" data-open-tasting-item="${escapeHtml(item.label)}">
+                ${body}
+                <div class="tasting-item__actions">
+                  <span class="tasting-item__cta">עוד טעימה</span>
+                  <button class="tasting-item__del-btn" type="button"
+                    data-delete-tasting-id="${escapeHtml(latestId)}"
+                    aria-label="מחק טעימה אחרונה">🗑️</button>
+                </div>
+              </div>
+            `;
+          }
+
           return `
             <button class="tasting-item ${statusClass}" type="button" data-open-tasting-item="${escapeHtml(item.label)}">
-              <span class="tasting-item__status" aria-hidden="true">${item.matchedEntries.length ? "✓" : "+"}</span>
-              <span class="tasting-item__body">
-                <span class="tasting-item__title-row">
-                  <strong>${escapeHtml(item.label)}</strong>
-                  ${item.isAllergen ? `<span class="tasting-item__pill tasting-item__pill--allergen">${escapeHtml(allergenLabel.pill)}</span>` : ""}
-                </span>
-                <span class="tasting-item__meta">${escapeHtml(metaParts.join(" · ") || "עדיין לא תועד")}</span>
-              </span>
-              <span class="tasting-item__cta">${escapeHtml(actionLabel)}</span>
+              ${body}
+              <span class="tasting-item__cta">סמן טעימה</span>
             </button>
           `;
         }).join("")}
