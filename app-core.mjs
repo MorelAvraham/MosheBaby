@@ -1,5 +1,5 @@
 export const SCHEMA_VERSION = 2;
-export const DEFAULT_BABY_NAME = "איתן אור";
+export const DEFAULT_BABY_NAME = "משה מרדכי";
 export const RECENT_ENTRY_WINDOW_DAYS = 45;
 
 export const COLLECTION_CONFIG = {
