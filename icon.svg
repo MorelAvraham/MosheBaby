@@ -148,9 +148,8 @@
     fill="#4a8c3f"
     text-anchor="middle"
     dominant-baseline="auto"
-    direction="rtl"
     letter-spacing="-2"
-  >משה</text>
+  >&#x05DE;&#x05E9;&#x05D4;</text>
 
   <!-- Subtle border -->
   <rect width="512" height="512" rx="110" ry="110" fill="none" stroke="#e8c9a0" stroke-width="6"/>
