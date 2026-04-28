@@ -51,12 +51,11 @@ const FIREBASE_CONFIG = {
   appId: "1:892436342161:web:022d01cd0300b559fc2630"
 };
 
-const WHO_KEY              = "eitan-or-who";
-const THEME_KEY            = "eitan-or-theme";
-const DEVICE_ID_KEY        = "eitan-or-device-id";
-const BIRTH_DATE           = "2025-09-16"; // Eitan Or's birthdate (YYYY-MM-DD)
-const SYNC_LOG_KEY         = "eitan-or-sync-log";
-const MAX_DIAGNOSTICS      = 25;
+const WHO_KEY       = "moshe-m-who";
+const THEME_KEY     = "moshe-m-theme";
+const DEVICE_ID_KEY = "moshe-m-device-id";
+const BIRTH_DATE    = "2026-04-20";
+const SYNC_LOG_KEY  = "moshe-m-sync-log";
 
 // ============================================================
 // PIN LOCK SYSTEM
@@ -103,10 +102,8 @@ const LABELS = {
 const WHO_LABELS = { 
   mom: "אמא", 
   dad: "אבא", 
-  sabaHaim: "סבא חיים",
-  savtaBruria: "סבתא ברוריה",
-  savtaNaama: "סבתא נעמה",
-  lulit: "לולית"
+  sabaHaim: "סבתא מרים",
+  savtaNaama: "סבתא שרה",
 };
 
 const TASTING_RATING_EMOJIS = {
